@@ -1,0 +1,264 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-Regular.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-Bold.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-ExtraBold.ttf);
+    font-weight: bolder;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-Italic.ttf);
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root{
+    --red: #CB3640;
+    --white: #EFF1ED;
+    --black: #0C090D;
+    --light-gray: #D2D3D4;
+    --violet: #6A66A3;
+    --dark-gray: #312e41;
+    --medium-gray: #6E707A;
+}
+
+body{
+    background-color: var(--light-gray);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    font-size: .5rem;
+    font-weight: normal;
+}
+main{
+    background-color: var(--white);
+    height: 50vh;
+    width: 53%;
+    margin: 7rem auto;
+    border-radius: 20px 20px 60px 20px;
+    padding: 30px;
+}
+.container{
+    display: flex;
+    letter-spacing: 1.5px;
+}
+#input-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: .7rem;
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+#input-container .input{
+    width: 100%;
+}
+input{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid var(--light-gray);
+    border-width: 1px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: var(--black)
+}
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input:focus, input:active{
+    border: 1px solid var(--violet);
+    outline: 1px solid var(--violet);
+}
+.empty-input{
+    border: 1px solid var(--red);
+}
+.empty-text{
+    color: var(--red);
+    font-family: 'Poppins', sans-serif;
+}
+#button-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    position: relative;
+}
+hr{
+    border: 1px solid var(--light-gray);
+    width: 100%;
+}
+#calculate-button{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--violet);
+    cursor: pointer;
+    position: relative;
+    right: 40%;
+    left: 40%;
+    bottom: 1.5rem;
+    z-index: 1;
+}
+#calculate-button:active, #calculate-button:focus, #calculate-button:hover{
+    background-color: var(--dark-gray);
+}
+#calculate-button img{
+    width: 1.7rem;
+    height: 1.7rem;
+}
+#result-container{
+    font-size: 1.5rem;
+    flex-direction: column;
+    font-style: italic;
+    font-weight: bold;
+}
+#result-container span{
+    color: var(--violet);
+}
+.error-message{
+    color: var(--red);
+    font-size: .5rem;
+    margin-top: 10px;
+    display: none;
+    font-style: italic;
+}
+.attribution{
+    margin-bottom: 20px;
+}
+.attribution p{
+    color: var(--black);
+    font-weight: bold;
+}
+a, a:visited{
+    color: var(--violet);
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+@media (min-width: 768px) {
+    main{
+        height: 65%;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 50px;
+    }
+    #input-container{
+        font-size: 1rem;
+        margin-top: 0px;
+        gap: 30px;
+    }
+    #input-container input{
+        font-size: 1.1rem;
+    }
+    #button-container{
+        margin-top: 40px;
+    }
+    #calculate-button{
+        width: 3.5rem;
+        height: 3.5rem;
+        left: 95%;
+        top: -2rem;
+    }
+    #result-container{
+        font-size: 2rem;
+    }
+    .error-message{
+        font-size: .8rem;
+    }
+}
+
+@media (min-width: 900px) {
+    main{
+        height: 65%;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 50px;
+        
+    }
+    #input-container{
+        margin-top: 40px;
+        font-size: 1.2rem;
+    }
+    #input-container input{
+        font-size: 1.3rem;
+    }
+    #button-container{
+        margin-top: 50px;
+    }
+    #calculate-button{
+        width: 3.5rem;
+        height: 3.5rem;
+        left: 95%;
+        top: -2rem;
+    }
+    #result-container{
+        font-size: 3rem;
+    }
+    .error-message{
+        font-size: .8rem;
+    }
+}
