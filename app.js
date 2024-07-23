@@ -236,10 +236,18 @@ function calculateAge(){
     result.day.textContent = days;
 }
 
+// Function to clear all input fields
+function clearInputFields(){
+    input.day.value = ''; // Clear the day input field
+    input.month.value = ''; // Clear the month input field
+    input.year.value = ''; // Clear the year input field
+}
+
 // Add click event listener to the button
 button.addEventListener('click', () => {
     if(checkAllInput()) { // Check all inputs
         calculateAge(); // Calculate age if inputs are valid
+        clearInputFields(); // Clear the input fields after displaying the result
     }
     else{
         clearResult(); // Clear result if inputs are invalid
