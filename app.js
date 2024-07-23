@@ -233,17 +233,30 @@ function getDaysInMonth(month, year) {
 
 // Function to calculate the age based on the input values
 function calculateAge(){
-    let years = dataExemplo.year - parseInt(input.year.value); // Calculate years difference
-    let months = dataExemplo.month - parseInt(input.month.value); // Calculate months difference
-    let days = dataExemplo.day - parseInt(input.day.value); // Calculate days difference
+    let birthYear = parseInt(input.year.value);
+    let birthMonth = parseInt(input.month.value);
+    let birthDay = parseInt(input.day.value);
+    
+    let currentYear = dataExemplo.year;
+    let currentMonth = dataExemplo.month;
+    let currentDay = dataExemplo.day;
+    
+    let years = currentYear - birthYear;
+    let months = currentMonth - birthMonth;
+    let days = currentDay - birthDay;
 
-    if (days < 0) { // Adjust for negative days
-        months--; // Subtract one month
-        days += getDaysInMonth(dataExemplo.month - 1, dataExemplo.year); // Add the correct number of days from the previous month
+    if (days < 0) {
+        months--;
+        let previousMonth = currentMonth - 1;
+        if (previousMonth <= 0) {
+            previousMonth = 12;
+            currentYear--;
+        }
+        days += getDaysInMonth(previousMonth, currentYear);
     }
-    if(months < 0) { // Adjust for negative months
-        months = 12 + months; // Add 12 months
-        years--; // Subtract one year
+    if (months < 0) {
+        months += 12;
+        years--;
     }
 
     // Display the calculated age
