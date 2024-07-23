@@ -40,23 +40,29 @@ const errorMessages = {
 
 // Function to check if the day value is valid
 function checkDay(day){
+    let month = parseInt(input.month.value);
+    let year = parseInt(input.year.value);
+    
     if(day < 1 || day > 31){ // Day must be between 1 and 31
         return false;
     }
-    if(parseInt(input.month.value) === 2){ // February checks
-        if(day === 29 && parseInt(input.year.value) % 4 === 0){
-            return false; // Invalid if leap year and February 29 is not allowed
-        }
-        if(day > 28){ // February can have at most 28 days
-            return false;
+    if(month === 2){ // February checks
+        if(isLeapYear(year)){
+            if(day > 29){ // Leap year check
+                return false;
+            }
+        } else {
+            if(day > 28){ // Non-leap year check
+                return false;
+            }
         }
     }
     // Check months with only 30 days
-    if((parseInt(input.month.value) === 4 || parseInt(input.month.value) === 6 || parseInt(input.month.value) === 9 || parseInt(input.month.value) === 11) && day > 30){
+    if((month === 4 || month === 6 || month === 9 || month === 11) && day > 30){
         return false;
     }
     // Check if the day is in the future compared to today
-    if(parseInt(input.year.value) === dataExemplo.year && parseInt(input.month.value) === dataExemplo.month && day > dataExemplo.day){
+    if(year === dataExemplo.year && month === dataExemplo.month && day > dataExemplo.day){
         return false;
     }
     return true;
@@ -215,6 +221,16 @@ function checkAllInput() {
     return true; // Return true if all inputs are valid
 }
 
+// Function to check if a year is a leap year
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+// Function to calculate the number of days in a given month
+function getDaysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
 // Function to calculate the age based on the input values
 function calculateAge(){
     let years = dataExemplo.year - parseInt(input.year.value); // Calculate years difference
@@ -222,8 +238,8 @@ function calculateAge(){
     let days = dataExemplo.day - parseInt(input.day.value); // Calculate days difference
 
     if (days < 0) { // Adjust for negative days
-        days = 31 + days; // Add 31 days
         months--; // Subtract one month
+        days += getDaysInMonth(dataExemplo.month - 1, dataExemplo.year); // Add the correct number of days from the previous month
     }
     if(months < 0) { // Adjust for negative months
         months = 12 + months; // Add 12 months
